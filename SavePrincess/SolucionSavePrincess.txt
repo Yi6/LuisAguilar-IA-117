@@ -1,0 +1,69 @@
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+static void displayPathtoPrincess(int n, String [] grid){
+    String linea = "";
+    int i,j = 0; 
+    for(i = 0; i < n;i++)
+    {
+       //System.out.println( grid[i]);
+        linea = grid[i];
+        for( j = 0; j < linea.length();j++)
+        {
+          
+            if(linea.charAt(j)=='p')
+            {
+                break;   
+            }
+            
+        }
+        if(j < linea.length()){break;}
+    }
+    int roboti = ((n-1)/2);
+    int robotj = ((n-1)/2);
+    if(i <= roboti)
+    {
+        for(;roboti > i;roboti--)
+        {
+            System.out.println("UP");    
+        }
+    }else
+    {
+        for(;roboti < i;roboti++)
+        {
+            System.out.println("DOWN");    
+        }        
+    }
+    if(j <= robotj)
+    {
+        for(;robotj > j;robotj--)
+        {
+            System.out.println("LEFT");    
+        }
+    }else
+    {
+        for(;robotj < j;robotj++)
+        {
+            System.out.println("RIGHT");    
+        }        
+    }    
+    //System.out.println("UP");
+    //System.out.println("RIGHT");
+    
+  }
+public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int m;
+        m = in.nextInt();
+        String grid[] = new String[m];
+        for(int i = 0; i < m; i++) {
+            grid[i] = in.next();
+        }
+
+    displayPathtoPrincess(m,grid);
+    }
+}
