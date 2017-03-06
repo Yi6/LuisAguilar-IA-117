@@ -7,14 +7,8 @@ import java.util.regex.*;
 
 public class Solution {
     static void next_move(int posc, int posr, String[] board){
-        //add logic here
-        int posicionF = posc;
-        int posicionC = posr;
+
         Solution.encontrarMasCercano(posc, posr,board);
-        //System.out.println(posc);
-
-
-        
     }
     
 
@@ -30,6 +24,7 @@ public class Solution {
     }
     
     static void encontrarMasCercano(int posc, int posr, String[] board){
+        int bandera = 0;
         for(int i = 0; i < board.length;i++)
         {
             String linea = board[i];
@@ -37,34 +32,33 @@ public class Solution {
             {
                 if(linea.charAt(j)=='d')
                 {
-                  boolean limpiado = Solution.Limpiar(posc,posr,board);   
-		          if( limpiado == false)
-		          {
-			         Solution.Desplazar(i,j,posr,posc);
-                     break;
-		          }
+                  bandera = 1;  
+                  if(posr == i && posc ==j)
+                  {
+                     System.out.println("CLEAN");
+                      break;
+                  }
+                  else
+                  {
+                     Solution.Desplazar(i,j,posr,posc);
+                      break;
+                  }
                 }
+               
             
             }
+            if (bandera == 1){break;}
    
         }       
     }
-    static boolean Limpiar(int columna, int fila, String[] board)
-    {
-        if(board[fila].charAt(columna) == 'd')
-        {
-            System.out.println("CLEAN");
-            return true;
-        }
-        return false;
-    }
+
     static void Desplazar(int DirtFila,int DirtColumna,int RoboFila, int RoboColumna)
     {
-        if(DirtFila < RoboFila)
+        if(DirtFila > RoboFila)
         {
             System.out.println("UP");
         }
-        else if(DirtFila > RoboFila)
+        else if(DirtFila < RoboFila)
         {
             System.out.println("DOWN"); 
         }
